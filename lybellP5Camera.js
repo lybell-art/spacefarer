@@ -147,15 +147,31 @@ class lybellP5Camera{
 		this.minZoom=_min;
 		this.maxZoom=_max;
 	}
-	screenTo3D(x, y, depth=1)
+	getRay(x,y)
 	{
 		const AxisZ=p5.Vector.sub(this.target, this.pos).normalize();
 		const AxisX=p5.Vector.cross(AxisZ, createVector(0,1,0)).normalize();
 		const AxisY=p5.Vector.cross(AxisX, AxisZ).normalize();
 		const baseLen=this.camera.defaultEyeZ;
-		let baseO=p5.Vector.add(this.pos, p5.Vector.mult(AxisZ, baseLen*depth));
-		baseO.add(p5.Vector.mult(AxisX, x*depth));
-		baseO.add(p5.Vector.mult(AxisY, y*depth));
-		return baseO;
+		let res=new p5.Vector(AxisX.x*x + AxisY.x*y + AxisZ.x * baseLen,
+				      AxisX.y*x + AxisY.y*y + AxisZ.y * baseLen,
+				      AxisX.z*x + AxisY.z*y + AxisZ.z * baseLen);
+		return res;
+	}
+	screenTo3D(x, y, depth=1)
+	{
+		let ray=getRay(x,y);
+		ray.mult(depth);
+		ray.add(this.pos);
+		return ray;
+	}
+	pointPick(mx, my, tx, ty, tz, dist)
+	{
+		let ray=getRay(mx,my);
+		const AxisZ=p5.Vector.sub(this.target, this.pos).normalize();
+		const pa=new p5.Vector(tx-this.pos.x, ty-this.pos.y, tz-this.pos.z);
+		let forward=p5.Vector.dot(AxisZ, pa);
+		if(forward <= 0) return false;
+		return (p5.Vector.cross(pa, ray).mag() / ray.mag() <= dist);
 	}
 }
