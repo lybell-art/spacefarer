@@ -65,7 +65,7 @@ class blob
 	}
 	checkOutFocus(center)
 	{
-		if(center - this._pos.z >= 500 && this.state == 'i')
+		if(center - this._pos.z >= 800 && this.state == 'i')
 		{
 			this.state = 'd';
 			this.frame = BLOB_TRANS_DURAITION;
@@ -95,7 +95,7 @@ class blobSystem
 		for(let i=0; i<10; i++)
 		{
 			let v=p5.Vector.random3D();
-			v = v.mult(randto(150,450));
+			v = v.mult(randto(400,600));
 			console.log(v.x, v.y, v.z);
 			this.blobs.push( new blob(v.x, v.y, v.z) );
 		}
@@ -110,7 +110,7 @@ class blobSystem
 		if(this.frame > 600)
 		{
 			let v=p5.Vector.random();
-			v.mult(randto(150,450));
+			v.mult(randto(250,500));
 			this.blob.push( new blob(v.x, v.y, this._center + 500) );
 		}
 		this.blobs.forEach(function(e){
@@ -143,7 +143,7 @@ function setup()
 {
 	frameRate(60);
 	createCanvas(windowWidth,windowHeight,WEBGL);
-	myCam=new lybellP5Camera(0, -500, -500, 0,0,0);
+	myCam=new lybellP5Camera(0, 0, 0, 0,200,0);
 	myCam.initialize();
 	bs=new blobSystem();
 	debugMode();
