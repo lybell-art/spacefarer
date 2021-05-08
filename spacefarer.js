@@ -87,7 +87,7 @@ class blobSystem
 		for(let i=0; i<10; i++)
 		{
 			let v=p5.Vector.random3D();
-			v.mult(Math.random(300,500));
+			v = v.mult(Math.random(300,500));
 			console.log(v.x, v.y, v.z);
 			this.blobs.push( new blob(v.x, v.y, v.z) );
 		}
