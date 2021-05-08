@@ -59,7 +59,7 @@ class blob
 	{
 		if(center - this._pos.z >= 500 && this.state == 'i')
 		{
-			this.state = 'b';
+			this.state = 'd';
 			this.frame = BLOB_TRANS_DURAITION;
 		}
 	}
