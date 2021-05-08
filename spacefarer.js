@@ -134,9 +134,6 @@ class blobSystem
 	{
 		let min=Infinity;
 		let no=-1;
-		this.blobs.forEach(function(e, i){
-			let dist = e.
-		});
 	}
 	render()
 	{
