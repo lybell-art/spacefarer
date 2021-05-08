@@ -72,9 +72,35 @@ class blob
 			this.frame = BLOB_TRANS_DURAITION;
 		}
 	}
+	pickingCheck(ray, AxisZ, cx, cy, cz)
+	{
+		const pa=new p5.Vector(this._pos[0]-cx, this._pos[1]-cy, this._pos[2]-cz);
+		let forward=p5.Vector.dot(AxisZ, pa);
+		if(forward <= 0) return false;
+		return (p5.Vector.cross(pa, ray).mag() / ray.mag() <= this.r);
+	}
+	getDistTo(cx, cy, cz)
+	{
+		let x=this._pos[0]-cx;
+		let y=this._pos[1]-cy;
+		let z=this._pos[2]-cz;
+		return x*x+ y*y + z*z;
+	}
+	isIdle()
+	{
+		return (this.state == 'i');
+	}
 	isDead()
 	{
 		return (this.state == 'x');
+	}
+	startSplit()
+	{
+		if(this.state == 'i')
+		{
+			this.state = 'd';
+			this.frame = BLOB_TRANS_DURAITION;
+		}
 	}
 	render()
 	{
@@ -131,10 +157,34 @@ class blobSystem
 			this.frame -=600;
 		}
 	}
-	pickup()
+	pickup(mx, my, cam)
 	{
 		let min=Infinity;
 		let no=-1;
+		let ray=cam.getRay(mx,my);
+		let front=cam.AxisZ;
+		let center=cam.pos;
+		let targetBlob=null;
+		this.blobs.forEach(function(e, i){
+			let rayCasted = e.pickingCheck(ray, front, center[0], center[1], center[2]);
+			if(rayCasted && e.isIdle())
+			{
+				let tmp=e.getDistTo(center[0], center[1], center[2]);
+				if(tmp < min)
+				{
+					min = tmp;
+					no = i;
+				}
+			}
+		});
+		console.log(no);
+		if(no > -1)
+		{
+			targetBlob=this.blobs[no];
+			targetBlob.startSplit();
+			for(let i=0;i<2;i++) this.blobs.push(new blob(targetBlob.pos[0], targetBlob.pos[1], targetBlob.pos[2], true));
+		}
+		return targetBlob;
 	}
 	render()
 	{
@@ -171,4 +221,9 @@ function draw()
 	shader(myShader);
 	bs.control();
 	bs.render();
+}
+
+function mousePressed()
+{
+	bs.pickup(mouseX - windowWidth/2,mouseY - windowHeight/2,myCam);
 }
