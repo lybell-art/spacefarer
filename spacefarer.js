@@ -138,6 +138,7 @@ function setup()
 	bs=new blobSystem();
 	debugMode();
 	noStroke();
+	fill("#24adaf");
 }
 
 function draw()
