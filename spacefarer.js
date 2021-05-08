@@ -19,8 +19,9 @@ class blob
 {
 	constructor(x,y,z, isSplit=false)
 	{
-		this._pos=new p5.Vector(x,y,z);
-		this.dir=p5.Vector.random3D();
+		this._pos=[x,y,z];
+		let rand3d=p5.Vector.random3D();
+		this.dir=[rand3d.x, rand3d.y, rand3d.z];
 		this.scale=constrain(randomGaussian(75,25), 0, 150);
 		this.r=0;
 		this.frame=BLOB_TRANS_DURAITION;
@@ -29,11 +30,11 @@ class blob
 	}
 	get pos()
 	{
-		return [this._pos.x, this._pos.y, this._pos.z];
+		return [this._pos[0], this._pos[1], this._pos[2]];
 	}
 	movement()
 	{
-		let acc = this.dir.copy();
+		let acc = [this.dir[0], this.dir[1], this.dir[2]];
 		if(this.state == 'g')
 		{
 			this.r=this.scale * smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
@@ -50,8 +51,8 @@ class blob
 			this.r=this.scale * smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
 			this.frame--;
 			let accMag = 1 + 5*smooth_transpose2d( this.frame/BLOB_TRANS_DURAITION );
-			acc.mult(accMag);
-			this._pos.add(acc);
+			for(let i=0;i<3;i++) acc[i]*=accMag;
+			for(let i=0;i<3;i++) this.pos[i]+=acc[i];
 			if(this.frame <= 0) this.state = 'i';
 		}
 		else if(this.state == 'd')
@@ -60,11 +61,11 @@ class blob
 			this.frame--;
 			if(this.frame <= 0) this.state = 'x';
 		}
-		else if(this.state == 'i') this._pos.add(acc);
+		else if(this.state == 'i') {for(let i=0;i<3;i++) this.pos[i]+=acc[i];}
 	}
 	checkOutFocus(center)
 	{
-		if(center - this._pos.z >= 800 && this.state == 'i')
+		if(center - this._pos[2] >= 800 && this.state == 'i')
 		{
 			this.state = 'd';
 			this.frame = BLOB_TRANS_DURAITION;
