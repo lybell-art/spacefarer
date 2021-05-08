@@ -108,7 +108,7 @@ class blobSystem
 			e.movement();
 			e.checkOutFocus(c);
 		});
-		this._center.z++;
+//		this._center.z++;
 		if(this.frame > 600)
 		{
 			for(let i = this.blobs.length-1 ; i>=0; i++)
@@ -148,6 +148,7 @@ function draw()
 	if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
 	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(-1,0); //A
 	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(1,0); //D
+	bs.control();
 	bs.render();
 	push();
 	translate(0,0,250);
