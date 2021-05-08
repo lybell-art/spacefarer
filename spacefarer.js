@@ -129,6 +129,14 @@ class blobSystem
 			this.frame -=600;
 		}
 	}
+	pickup()
+	{
+		let min=Infinity;
+		let no=-1;
+		this.blobs.forEach(function(e, i){
+			let dist = e.
+		});
+	}
 	render()
 	{
 		this.blobs.forEach(function(e){
@@ -141,7 +149,7 @@ function setup()
 {
 	frameRate(60);
 	createCanvas(windowWidth,windowHeight,WEBGL);
-	myCam=new lybellP5Camera(0, 0, 0, 0,200,0);
+	myCam=new lybellP5Camera(0, 0, 0, 0,0,1000);
 	myCam.initialize();
 	bs=new blobSystem();
 	debugMode();
@@ -158,16 +166,4 @@ function draw()
 	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D
 	bs.control();
 	bs.render();
-	push();
-	translate(0,-700,250);
-	box(50);
-	pop();
-	push();
-	translate(0,-700,-250);
-	box(50);
-	pop();
-	push();
-	translate(0,-600,0);
-	box(50);
-	pop();
 }
