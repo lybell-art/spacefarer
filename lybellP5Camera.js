@@ -120,10 +120,12 @@ class lybellP5Camera{
 		let z=this.target.z-this.pos.z;
 		
 		let r=Math.sqrt(x*x + z*z);
+		console.log(_x, _y, x, y, z, r);
 		
 		let sinY=Math.sin(_y*rad); let cosY=Math.cos(_y*rad);
 		let sinX1=x/r; let cosX1=z/r;
 		let sinX2=Math.sin(_x*rad); let cosX2=Math.cos(_x*rad);
+		console.log(sinY, cosY, sinX1, cosX1, sinX2, cosX2);
 		
 		let y1=y*cosY - r*sinY;
 		let z1=r;
