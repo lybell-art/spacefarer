@@ -31,12 +31,12 @@ class blob
 		{
 			this.r=this.scale * smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
 			this.frame--;
-			if(this.frame <= 0) this.state == 'i';
+			if(this.frame <= 0) this.state = 'i';
 		}
 		else if(this.state == '_')
 		{
 			this.frame--;
-			if(this.frame <= 0) {this.state == 's'; this.frame = BLOB_TRANS_DURAITION;}
+			if(this.frame <= 0) {this.state = 's'; this.frame = BLOB_TRANS_DURAITION;}
 		}
 		else if(this.state == 's')
 		{
@@ -45,13 +45,13 @@ class blob
 			let accMag = 1 + 5*smooth_transpose2d( this.frame/BLOB_TRANS_DURAITION );
 			acc.mult(accMag);
 			this._pos.add(acc);
-			if(this.frame <= 0) this.state == 'i';
+			if(this.frame <= 0) this.state = 'i';
 		}
 		else if(this.state == 'd')
 		{
 			this.r=this.scale * smooth_transpose2d( this.frame/BLOB_TRANS_DURAITION );
 			this.frame--;
-			if(this.frame <= 0) this.state == 'x';
+			if(this.frame <= 0) this.state = 'x';
 		}
 		else if(this.state == 'i') this._pos.add(acc);
 	}
