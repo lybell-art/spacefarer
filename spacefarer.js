@@ -30,7 +30,6 @@ class blob
 		if(this.state == 'g')
 		{
 			this.r=this.scale * smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
-			console.log( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
 			this.frame--;
 			if(this.frame <= 0) this.state = 'i';
 		}
