@@ -37,7 +37,6 @@ class blob
 		if(this.state == 'g')
 		{
 			this.r=this.scale * smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
-			console.log(smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION ));
 			this.frame--;
 			if(this.frame <= 0) this.state = 'i';
 		}
@@ -96,7 +95,6 @@ class blobSystem
 		{
 			let v=p5.Vector.random3D();
 			v = v.mult(randto(400,600));
-			console.log(v.x, v.y, v.z);
 			this.blobs.push( new blob(v.x, v.y, v.z) );
 		}
 	}
