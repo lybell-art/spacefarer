@@ -131,7 +131,7 @@ class lybellP5Camera{
 		
 		let y1=y*cosY - r*sinY;
 		let z1=r;
-		console.log(Math.abs(yAngle - PI/2), _y);
+		console.log(Math.abs(yAngle - PI), yAngle, _y);
 		if(!limiter) z1=y*sinY + r*cosY;
 		
 		let sinX=sinX1 * cosX2 + cosX1 * sinX2;
