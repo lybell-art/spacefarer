@@ -160,7 +160,7 @@ function draw()
 	box(50);
 	pop();
 	push();
-	translate(0,-200,-250);
+	translate(0,-400,0);
 	box(50);
 	pop();
 }
