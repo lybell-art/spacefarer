@@ -134,7 +134,7 @@ function setup()
 {
 	frameRate(60);
 	createCanvas(windowWidth,windowHeight,WEBGL);
-	myCam=new lybellP5Camera(0, -700, 60, 0,0,0);
+	myCam=new lybellP5Camera(0, -500, -500, 0,0,0);
 	myCam.initialize();
 	bs=new blobSystem();
 	debugMode();
