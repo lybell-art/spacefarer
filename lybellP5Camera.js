@@ -124,6 +124,7 @@ class lybellP5Camera{
 		
 		let sinY=Math.sin(_y*rad); let cosY=Math.cos(_y*rad);
 		let sinX1=x/r; let cosX1=z/r;
+		if(r == 0) {sinX1=0; cosX1=1;}
 		let sinX2=Math.sin(_x*rad); let cosX2=Math.cos(_x*rad);
 		console.log(sinY, cosY, sinX1, cosX1, sinX2, cosX2);
 		
