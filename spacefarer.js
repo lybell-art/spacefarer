@@ -6,6 +6,13 @@ function smooth_transpose2d(d)
 	else if(d > 1) return 1;
 	return d*d;
 }
+function randto(min, max, integer=false)
+{
+	let dist=max-min;
+	let res=Math.random() * dist + min;
+	if(integer) res=Math.floor(res);
+	return res;
+}
 
 const BLOB_TRANS_DURAITION = 120;
 class blob
@@ -14,7 +21,7 @@ class blob
 	{
 		this._pos=new p5.Vector(x,y,z);
 		this.dir=p5.Vector.random3D();
-		this.scale=constrain(randomGaussian(100,30), 0, 200);
+		this.scale=constrain(randomGaussian(75,25), 0, 150);
 		this.r=0;
 		this.frame=BLOB_TRANS_DURAITION;
 		this.state='g'; //g:generate i:idle s:split d:destroy x:pending-removal _:pending-split
@@ -88,7 +95,7 @@ class blobSystem
 		for(let i=0; i<10; i++)
 		{
 			let v=p5.Vector.random3D();
-			v = v.mult(Math.random(300,500));
+			v = v.mult(randto(150,450));
 			console.log(v.x, v.y, v.z);
 			this.blobs.push( new blob(v.x, v.y, v.z) );
 		}
@@ -103,7 +110,7 @@ class blobSystem
 		if(this.frame > 600)
 		{
 			let v=p5.Vector.random();
-			v.mult(Math.random(150,450));
+			v.mult(randto(150,450));
 			this.blob.push( new blob(v.x, v.y, this._center + 500) );
 		}
 		this.blobs.forEach(function(e){
