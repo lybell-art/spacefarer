@@ -79,7 +79,7 @@ class blob
 	{
 		if(this.r <= 0 ) return;
 		push();
-		translate(this._pos);
+		translate(this._pos[0], this._pos[1], this._pos[2]);
 		sphere(this.r);
 		pop();
 	}
