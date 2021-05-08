@@ -146,8 +146,8 @@ function draw()
 	background(255);
 	if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.pan(0,1); //W
 	if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
-	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(-1,0); //A
-	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(1,0); //D
+	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(1,0); //A
+	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D
 	bs.control();
 	bs.render();
 	push();
