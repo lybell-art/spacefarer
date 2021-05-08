@@ -7,7 +7,7 @@ function smooth_transpose2d(d)
 	return d*d;
 }
 
-const BLOB_TRANS_DURAITION = 240;
+const BLOB_TRANS_DURAITION = 120;
 class blob
 {
 	constructor(x,y,z, isSplit=false)
@@ -30,6 +30,7 @@ class blob
 		if(this.state == 'g')
 		{
 			this.r=this.scale * smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
+			console.log(smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION ));
 			this.frame--;
 			if(this.frame <= 0) this.state = 'i';
 		}
