@@ -3,7 +3,7 @@ let bs, myCam;
 function smooth_transpose2d(d)
 {
 	if(d < 0) return 0;
-	else if(d > 0) return 1;
+	else if(d > 1) return 1;
 	return d*d;
 }
 
