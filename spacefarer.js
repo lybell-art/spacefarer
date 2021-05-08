@@ -14,7 +14,7 @@ class blob
 	{
 		this._pos=new p5.Vector(x,y,z);
 		this.dir=p5.Vector.random3D();
-		this.scale=constrain(randomGaussian(50,20), 0, 100);
+		this.scale=constrain(randomGaussian(100,30), 0, 200);
 		this.r=0;
 		this.frame=BLOB_TRANS_DURAITION;
 		this.state='g'; //g:generate i:idle s:split d:destroy x:pending-removal _:pending-split
