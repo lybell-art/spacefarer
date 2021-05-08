@@ -7,7 +7,7 @@ function smooth_transpose2d(d)
 	return d*d;
 }
 
-const BLOB_TRANS_DURAITION = 60;
+const BLOB_TRANS_DURAITION = 240;
 class blob
 {
 	constructor(x,y,z, isSplit=false)
