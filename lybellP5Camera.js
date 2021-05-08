@@ -85,16 +85,18 @@ class lybellP5Camera{
 		let sinY=Math.sin(_y*rad); let cosY=Math.cos(_y*rad);
 		let sinX1=x/r; let cosX1=z/r;
 		let sinX2=Math.sin(_x*rad); let cosX2=Math.cos(_x*rad);
+		let yAngle=Math.atan2(y,r);
+		let limiter = (Math.abs( Math.abs(yAngle) - PI/2 ) < 0.02 ) && ((yAngle * _y) < 0);
 		
 		let y1=y*cosY - r*sinY;
 		let z1=r;
-		if(Math.abs((y-y1) / this.dist) >= 0.002) z1=y*sinY + r*cosY;
+		if(!limiter) z1=y*sinY + r*cosY;
 		
 		let sinX=sinX1 * cosX2 + cosX1 * sinX2;
 		let cosX=cosX1 * cosX2 - sinX1 * sinX2;
 		
 		this.pos.x=this.target.x + sinX*z1;
-		if(Math.abs((y-y1) / this.dist) >= 0.002) this.pos.y=this.target.y + y1;
+		if(!limiter) this.pos.y=this.target.y + y1;
 		this.pos.z=this.target.z + cosX*z1;
 		this.apply();
 	}
@@ -120,7 +122,6 @@ class lybellP5Camera{
 		let z=this.target.z-this.pos.z;
 		
 		let r=Math.sqrt(x*x + z*z);
-		console.log(_x, _y, x, y, z, r);
 		
 		let sinY=Math.sin(_y*rad); let cosY=Math.cos(_y*rad);
 		let sinX1=x/r; let cosX1=z/r;
@@ -131,7 +132,6 @@ class lybellP5Camera{
 		
 		let y1=y*cosY - r*sinY;
 		let z1=r;
-		console.log(Math.abs(yAngle) - PI/2, yAngle, _y);
 		if(!limiter) z1=y*sinY + r*cosY;
 		
 		let sinX=sinX1 * cosX2 + cosX1 * sinX2;
