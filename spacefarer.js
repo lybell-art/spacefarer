@@ -133,7 +133,7 @@ class blobSystem
 function setup()
 {
 	createCanvas(windowWidth,windowHeight,WEBGL);
-	myCam=new lybellP5Camera(0, 0, 0, 0,0,500);
+	myCam=new lybellP5Camera(0, -800, 0, 0,0,0);
 	myCam.initialize();
 	bs=new blobSystem();
 	debugMode();
