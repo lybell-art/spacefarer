@@ -77,7 +77,7 @@ class blob
 	}
 }
 
-class blobSystem()
+class blobSystem
 {
 	constructor()
 	{
