@@ -155,7 +155,7 @@ class blobSystem
 		if(this.frame > 100)
 		{
 			let v=p5.Vector.random2D();
-			v.mult(randto(250,500));
+			v.mult(randto(100,300));
 			this.blobs.push( new blob(v.x, v.y, this._center + 500) );
 		}
 		this.blobs.forEach(function(e){
