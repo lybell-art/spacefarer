@@ -232,7 +232,6 @@ function preload()
 	myShader=loadShader('shaders/shader.vert','shaders/shader.frag');
 }
 
-let b;
 function setup()
 {
 	frameRate(60);
@@ -240,10 +239,7 @@ function setup()
 	myCam=new lybellP5Camera(0, 0, 0, 0,0,1000);
 	myCam.initialize();
 	bs=new blobSystem();
-	debugMode();
 	noStroke();
-	fill("#24adaf");
-	b=new blob(0,0,0);
 }
 
 function draw()
