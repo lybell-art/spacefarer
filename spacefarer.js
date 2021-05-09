@@ -25,7 +25,7 @@ function vecToAngle(x, y, z)
 	return {theta:theta, phi:phi};
 }
 
-const BLOB_TRANS_DURAITION = 120;
+const BLOB_TRANS_DURAITION = 60;
 class blob
 {
 	constructor(x,y,z, isSplit=false)
@@ -33,7 +33,7 @@ class blob
 		this._pos=[x,y,z];
 		let rand3d=p5.Vector.random3D();
 		this.dir=[rand3d.x/2, rand3d.y/2, rand3d.z/2];
-		this.scale=constrain(randomGaussian(75,25), 0, 150);
+		this.scale=constrain(randomGaussian(50,20), 0, 100);
 		this.r=0;
 		this.frame=BLOB_TRANS_DURAITION;
 		this.state='g'; //g:generate i:idle s:split d:destroy x:pending-removal _:pending-split
