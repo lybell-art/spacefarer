@@ -218,7 +218,7 @@ function cameraMovement(cam, center, mode)
 		cam.setPosition(0, 0, center, 0, 0, center+1000);
 		break;
 		case 1:
-		cam.setPosition(-500, 0, center - center % 500, 0, 0, center);
+		cam.setPosition(-500, -100, center - center % 500 - 250, 0, 0, center);
 		break;
 	}
 }
