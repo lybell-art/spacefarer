@@ -228,7 +228,7 @@ function cameraMovement(cam, center, mode)
 		cam.setPosition(0, -500, cenBase+100, 0, 0, cenBase);
 		break;
 		case 4:
-		cam.setPosition(0, 500, cenBase+200, 0, 0, cenBase);
+		cam.setPosition(100, 500, cenBase+200, 0, 0, cenBase);
 		break;
 	}
 }
@@ -251,7 +251,7 @@ function setup()
 function draw()
 {
 	const deg = bs.center * PI/180;
-	background(Math.sin(deg)*60 + 60, 10, Math.cos(deg)*60 + 60);
+	background(Math.sin(deg)*30 + 30, 40, Math.cos(deg)*60 + 60);
 	if(freeCam)
 	{
 		if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.pan(0,1); //W
