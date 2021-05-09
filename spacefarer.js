@@ -63,10 +63,10 @@ class blob
 		{
 			this.r=this.scale * smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
 			this.frame--;
-			let accMag = 1 + 100*smooth_transpose2d( this.frame/BLOB_TRANS_DURAITION );
+			let accMag = 1 + 50*smooth_transpose2d( this.frame/BLOB_TRANS_DURAITION );
 			console.log(accMag, this.pos, acc);
 			for(let i=0;i<3;i++) acc[i]*=accMag;
-			for(let i=0;i<3;i++) this.pos[i]+=acc[i];
+			for(let i=0;i<3;i++) this._pos[i]+=acc[i];
 			console.log(acc, this.pos);
 			if(this.frame <= 0) this.state = 'i';
 		}
@@ -76,7 +76,7 @@ class blob
 			this.frame--;
 			if(this.frame <= 0) this.state = 'x';
 		}
-		else if(this.state == 'i') {for(let i=0;i<3;i++) this.pos[i]+=acc[i];}
+		else if(this.state == 'i') {for(let i=0;i<3;i++) this._pos[i]+=acc[i];}
 	}
 	checkOutFocus(center)
 	{
