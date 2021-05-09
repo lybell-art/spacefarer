@@ -250,7 +250,7 @@ function draw()
 //	bs.control();
 //	bs.render();
 //	b.movement();
-	b.render();
+	sphere(100,80,80);
 }
 
 function mousePressed()
