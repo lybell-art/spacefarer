@@ -220,7 +220,7 @@ function cameraMovement(cam, center, mode)
 		cam.move(0,0,1,true);
 		break;
 		case 1:
-		cam.setPosition(500, 0, center - center % 500, 0, 0, center);
+		cam.setPosition(-500, 0, center - center % 500, 0, 0, center);
 		break;
 	}
 }
@@ -257,6 +257,10 @@ function draw()
 	shader(myShader);
 	bs.control();
 	bs.render();
+	push();
+	translate(0,0,bs.center);
+	box(50,50,100);
+	pop();
 }
 
 function mousePressed()
