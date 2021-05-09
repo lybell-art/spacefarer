@@ -1,4 +1,4 @@
-let bs, myCam;
+let bs, myCam, freeCam=false;
 let myShader;
 const SCENE_DURATION = 500;
 
@@ -227,6 +227,9 @@ function cameraMovement(cam, center, mode)
 		case 3:
 		cam.setPosition(0, -500, cenBase+100, 0, 0, cenBase);
 		break;
+		case 4:
+		cam.setPosition(0, 500, cenBase+200, 0, 0, cenBase);
+		break;
 	}
 }
 
@@ -247,13 +250,20 @@ function setup()
 
 function draw()
 {
-	background(10);
-/*	if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.pan(0,1); //W
-	if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
-	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(1,0); //A
-	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D */
-	let camMode = Math.floor(bs.center / SCENE_DURATION) % 4;
-	cameraMovement(myCam, bs.center, 2);
+	const deg = bs.center * PI/180;
+	background(Math.sin(deg)*0.3 + 0.3, 10, Math.cos(deg)*0.3 + 0.3);
+	if(freeCam)
+	{
+		if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.pan(0,1); //W
+		if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
+		if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(1,0); //A
+		if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D
+	}
+	else
+	{
+		let camMode = Math.floor(bs.center / SCENE_DURATION) % 5;
+		cameraMovement(myCam, bs.center, camMode);
+	}
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
 	bs.control();
@@ -262,6 +272,14 @@ function draw()
 	translate(0,0,bs.center);
 	box(50,50,100);
 	pop();
+}
+
+function keyPressed()
+{
+	if (keyCode === 32) {
+		freeCam = !freeCam;
+		if(freeCam) cameraMovement(myCam, bs.center, 0);
+	}
 }
 
 function mousePressed()
