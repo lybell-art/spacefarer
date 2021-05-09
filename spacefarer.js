@@ -242,7 +242,7 @@ function draw()
 	if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
 	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(1,0); //A
 	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D */
-	cameraMovement(cam, 0);
+	cameraMovement(myCam, 0);
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
 	bs.control();
