@@ -6,6 +6,7 @@ varying vec2 vTexCoord;
 varying vec3 vNormal;
 
 void main() {
-  vec3 color = vNormal * 0.3 + 0.7;
-  gl_FragColor = vec4(color.x, color.y*0.1, color.z ,1.0);
+  vec3 precolor = vec3(vNormal.x, abs(vNormal.y), vNormal.z);
+  vec3 color = precolor * 0.3 + 0.7;
+  gl_FragColor = vec4(color.x*0.1, color.y, color.z*0.1 ,1.0);
 }
