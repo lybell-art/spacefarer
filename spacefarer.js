@@ -152,18 +152,18 @@ class blobSystem
 	control()
 	{
 		const c=this._center
-		if(this.frame > 600)
+		if(this.frame > 100)
 		{
 			let v=p5.Vector.random2D();
 			v.mult(randto(250,500));
-			this.blob.push( new blob(v.x, v.y, this._center + 500) );
+			this.blobs.push( new blob(v.x, v.y, this._center + 500) );
 		}
 		this.blobs.forEach(function(e){
 			e.movement();
 			e.checkOutFocus(c);
 		});
 		this._center++;
-		if(this.frame > 600)
+		if(this.frame > 100)
 		{
 			for(let i = this.blobs.length-1 ; i>=0; i++)
 			{
@@ -173,7 +173,7 @@ class blobSystem
 					this.blobs.splice(i, 1);
 				}
 			}
-			this.frame -=600;
+			this.frame -=100;
 		}
 		this.frame++;
 	}
