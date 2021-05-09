@@ -263,6 +263,7 @@ function draw()
 	{
 		let camMode = Math.floor(bs.center / SCENE_DURATION) % 5;
 		cameraMovement(myCam, bs.center, camMode);
+		myCam.move(0,0,1,true);
 	}
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
