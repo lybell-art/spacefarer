@@ -2,11 +2,13 @@ let bs, myCam;
 let myShader;
 let c=0.0;
 
-function smooth_transpose2d(d)
+function smooth_transpose2d(d, pow=3)
 {
 	if(d < 0) return 0;
 	else if(d > 1) return 1;
-	return d*d*d*d*d;
+	let dd=d * pow;
+	let emax=Math.exp(pow);
+	return (Math.exp(dd)-1)/(emax -1);
 }
 function randto(min, max, integer=false)
 {
@@ -215,16 +217,19 @@ function preload()
 	myShader=loadShader('shaders/shader.vert','shaders/shader.frag');
 }
 
+let b;
 function setup()
 {
 	frameRate(60);
 	createCanvas(windowWidth,windowHeight,WEBGL);
-	myCam=new lybellP5Camera(0, 0, 0, 0,0,1000);
+//	myCam=new lybellP5Camera(0, 0, 0, 0,0,1000);
+	myCam=new lybellP5Camera(0-500,-500,0,0,0)
 	myCam.initialize();
 	bs=new blobSystem();
 	debugMode();
 	noStroke();
 	fill("#24adaf");
+	b=new blob(0,0,0);
 }
 
 function draw()
@@ -236,11 +241,14 @@ function draw()
 	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
-	bs.control();
-	bs.render();
+//	bs.control();
+//	bs.render();
+	b.movement();
+	b.render();
+	
 }
 
 function mousePressed()
 {
-	bs.pickup(mouseX - windowWidth/2,mouseY - windowHeight/2,myCam);
+//	bs.pickup(mouseX - windowWidth/2,mouseY - windowHeight/2,myCam);
 }
