@@ -196,7 +196,6 @@ class blobSystem
 				}
 			}
 		});
-		console.log(no);
 		if(no > -1)
 		{
 			targetBlob=this.blobs[no];
@@ -223,7 +222,7 @@ function setup()
 	frameRate(60);
 	createCanvas(windowWidth,windowHeight,WEBGL);
 //	myCam=new lybellP5Camera(0, 0, 0, 0,0,1000);
-	myCam=new lybellP5Camera(0-500,-50,0,0,0)
+	myCam=new lybellP5Camera(0,-500,-50,0,0,0)
 	myCam.initialize();
 	bs=new blobSystem();
 	debugMode();
@@ -247,7 +246,7 @@ function draw()
 //	bs.render();
 	b.movement();
 	b.render();
-	b.dir=[Math.cos(slider.value() / PI),0,Math.sin(slider.value()  / PI)];
+	b.dir=[Math.cos(slider.value() * PI / 180),0,Math.sin(slider.value() * PI / 180)];
 }
 
 function mousePressed()
