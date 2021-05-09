@@ -245,7 +245,7 @@ function draw()
 //	bs.render();
 	b.movement();
 	b.render();
-	
+	b.dir=[1,0,0];
 }
 
 function mousePressed()
