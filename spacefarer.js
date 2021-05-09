@@ -162,7 +162,7 @@ class blobSystem
 			e.movement();
 			e.checkOutFocus(c);
 		});
-		this._center.z++;
+		this._center++;
 		if(this.frame > 600)
 		{
 			for(let i = this.blobs.length-1 ; i>=0; i++)
