@@ -251,7 +251,7 @@ function setup()
 function draw()
 {
 	const deg = bs.center * PI/180;
-	background(Math.sin(deg)*0.3 + 0.3, 10, Math.cos(deg)*0.3 + 0.3);
+	background(Math.sin(deg)*60 + 60, 10, Math.cos(deg)*60 + 60);
 	if(freeCam)
 	{
 		if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.pan(0,1); //W
