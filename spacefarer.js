@@ -1,6 +1,6 @@
 let bs, myCam;
 let myShader;
-let c=0.0;
+const SCENE_DURATION = 500;
 
 function smooth_transpose2d(d, pow=3)
 {
@@ -213,7 +213,7 @@ class blobSystem
 }
 function cameraMovement(cam, center, mode)
 {
-	let cenBase=center - center % 500 + 250;
+	let cenBase=center - center % SCENE_DURATION + SCENE_DURATION/2;
 	switch(mode){
 		case 0:
 		cam.setPosition(0, 0, center, 0, 0, center+1000);
@@ -253,7 +253,7 @@ function draw()
 	if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
 	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(1,0); //A
 	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D */
-	let camMode = Math.floor(bs.center / 500) % 3;
+	let camMode = Math.floor(bs.center / SCENE_DURATION) % 3;
 	cameraMovement(myCam, bs.center, camMode);
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
