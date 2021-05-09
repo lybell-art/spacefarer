@@ -215,13 +215,14 @@ class blobSystem
 }
 function cameraMovement(cam, center, mode)
 {
-	switch(mode):
+	switch(mode){
 		case 0:
 		cam.move(0,0,1,true);
 		break;
 		case 1:
 		cam.setPosition(500, 0, center - center % 500, 0, 0, center);
 		break;
+	}
 }
 
 function preload()
