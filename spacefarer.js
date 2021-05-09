@@ -230,7 +230,7 @@ function setup()
 	noStroke();
 	fill("#24adaf");
 	b=new blob(0,0,0);
-	slider=createSlider(-PI,PI,0);
+	slider=createSlider(-180,180,0);
 	slider.position(10, 10);
 }
 
@@ -247,7 +247,7 @@ function draw()
 //	bs.render();
 	b.movement();
 	b.render();
-	b.dir=[Math.cos(slider.value()),0,Math.sin(slider.value())];
+	b.dir=[Math.cos(slider.value() / PI),0,Math.sin(slider.value()  / PI)];
 }
 
 function mousePressed()
