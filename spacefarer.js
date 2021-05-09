@@ -82,7 +82,7 @@ class blob
 	}
 	checkOutFocus(center)
 	{
-		if(center - this._pos[2] >= 800 && this.state == 'i')
+		if(center - this._pos[2] >= 500 && this.state == 'i')
 		{
 			this.state = 'd';
 			this.frame = BLOB_TRANS_DURAITION;
@@ -141,7 +141,7 @@ class blobSystem
 		for(let i=0; i<10; i++)
 		{
 			let v=p5.Vector.random3D();
-			v = v.mult(randto(400,600));
+			v = v.mult(randto(200,400));
 			this.blobs.push( new blob(v.x, v.y, v.z) );
 		}
 	}
@@ -151,8 +151,9 @@ class blobSystem
 	}
 	control()
 	{
+		const CHECKING_FRAME=150;
 		const c=this._center
-		if(this.frame > 100)
+		if(this.frame > CHECKING_FRAME)
 		{
 			let v=p5.Vector.random2D();
 			v.mult(randto(100,300));
@@ -163,7 +164,7 @@ class blobSystem
 			e.checkOutFocus(c);
 		});
 		this._center++;
-		if(this.frame > 100)
+		if(this.frame > CHECKING_FRAME)
 		{
 			for(let i = this.blobs.length-1 ; i>=0; i--)
 			{
@@ -173,7 +174,7 @@ class blobSystem
 					this.blobs.splice(i, 1);
 				}
 			}
-			this.frame -=100;
+			this.frame -=CHECKING_FRAME;
 		}
 		this.frame++;
 	}
