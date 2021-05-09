@@ -165,10 +165,9 @@ class blobSystem
 		this._center++;
 		if(this.frame > 100)
 		{
-			for(let i = this.blobs.length-1 ; i>=0; i++)
+			for(let i = this.blobs.length-1 ; i>=0; i--)
 			{
 				let blob = this.blobs[i];
-				console.log(blob);
 				if(blob.isDead())
 				{
 					this.blobs.splice(i, 1);
