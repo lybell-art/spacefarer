@@ -193,12 +193,12 @@ class blobSystem
 			}
 		});
 		console.log(no);
-/*		if(no > -1)
+		if(no > -1)
 		{
 			targetBlob=this.blobs[no];
 			targetBlob.startSplit();
 			for(let i=0;i<2;i++) this.blobs.push(new blob(targetBlob.pos[0], targetBlob.pos[1], targetBlob.pos[2], true));
-		}*/
+		}
 		return targetBlob;
 	}
 	render()
