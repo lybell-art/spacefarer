@@ -217,7 +217,7 @@ function preload()
 	myShader=loadShader('shaders/shader.vert','shaders/shader.frag');
 }
 
-let b;
+let b, slider;
 function setup()
 {
 	frameRate(60);
@@ -230,6 +230,8 @@ function setup()
 	noStroke();
 	fill("#24adaf");
 	b=new blob(0,0,0);
+	slider=createSlider(-PI,PI,0);
+	slider.position(10, 10);
 }
 
 function draw()
@@ -245,7 +247,7 @@ function draw()
 //	bs.render();
 	b.movement();
 	b.render();
-	b.dir=[1,0,0];
+	b.dir=[Math.cos(slider.value()),0,Math.sin(slider.value())];
 }
 
 function mousePressed()
