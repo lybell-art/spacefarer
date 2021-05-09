@@ -213,12 +213,16 @@ class blobSystem
 }
 function cameraMovement(cam, center, mode)
 {
+	let cenBase=center - center % 500 + 250;
 	switch(mode){
 		case 0:
 		cam.setPosition(0, 0, center, 0, 0, center+1000);
 		break;
 		case 1:
-		cam.setPosition(-500, -100, center - center % 500 - 250, 0, 0, center);
+		cam.setPosition(-500, -100, cenBase, 0, 0, center);
+		break;
+		case 1:
+		cam.setPosition(0, -500, cenBase, 0, 0, cenBase);
 		break;
 	}
 }
