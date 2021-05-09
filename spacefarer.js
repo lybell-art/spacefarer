@@ -175,6 +175,7 @@ class blobSystem
 			}
 			this.frame -=600;
 		}
+		this.frame++;
 	}
 	pickup(mx, my, cam)
 	{
