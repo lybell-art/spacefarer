@@ -6,7 +6,7 @@ function smooth_transpose2d(d)
 {
 	if(d < 0) return 0;
 	else if(d > 1) return 1;
-	return d*d*d*d*d*d*d;
+	return d*d*d*d*d;
 }
 function randto(min, max, integer=false)
 {
@@ -30,7 +30,7 @@ class blob
 	{
 		this._pos=[x,y,z];
 		let rand3d=p5.Vector.random3D();
-		this.dir=[rand3d.x, rand3d.y, rand3d.z];
+		this.dir=[rand3d.x/2, rand3d.y/2, rand3d.z/2];
 		this.scale=constrain(randomGaussian(75,25), 0, 150);
 		this.r=0;
 		this.frame=BLOB_TRANS_DURAITION;
