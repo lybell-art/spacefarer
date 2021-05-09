@@ -63,7 +63,7 @@ class blob
 		{
 			this.r=this.scale * smooth_transpose2d( (BLOB_TRANS_DURAITION-this.frame)/BLOB_TRANS_DURAITION );
 			this.frame--;
-			let accMag = 1 + 5*smooth_transpose2d( this.frame/BLOB_TRANS_DURAITION );
+			let accMag = 1 + 100*smooth_transpose2d( this.frame/BLOB_TRANS_DURAITION );
 			for(let i=0;i<3;i++) acc[i]*=accMag;
 			for(let i=0;i<3;i++) this.pos[i]+=acc[i];
 			if(this.frame <= 0) this.state = 'i';
