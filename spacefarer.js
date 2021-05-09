@@ -38,7 +38,7 @@ class blob
 		if(isSplit)
 		{
 			this.state = '_';
-			this.scale *= 0.625;
+			this.scale *= 0.5;
 		}
 	}
 	get pos()
