@@ -125,7 +125,7 @@ class blob
 		translate(this._pos[0], this._pos[1], this._pos[2]);
 		let angles = vecToAngle(this.dir[0], this.dir[1], this.dir[2]);
 		rotateZ(angles.phi);
-		rotateY(angles.theta);
+		rotateY(-angles.theta);
 		sphere(this.r, 80, 80);
 		pop();
 	}
@@ -247,6 +247,7 @@ function draw()
 	b.movement();
 	b.render();
 	b.dir=[Math.cos(slider.value() * PI / 180),0,Math.sin(slider.value() * PI / 180)];
+	
 }
 
 function mousePressed()
