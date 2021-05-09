@@ -1,5 +1,6 @@
 let bs, myCam;
 let myShader;
+let c=0.0;
 
 function smooth_transpose2d(d)
 {
@@ -13,6 +14,13 @@ function randto(min, max, integer=false)
 	let res=Math.random() * dist + min;
 	if(integer) res=Math.floor(res);
 	return res;
+}
+function vecToAngle(x, y, z)
+{
+	let r=Math.sqrt(x*x + z*z);
+	let theta=Math.atan2(z,x);
+	let phi=Math.atan2(y,r);
+	return {theta:theta, phi:phi};
 }
 
 const BLOB_TRANS_DURAITION = 120;
@@ -111,6 +119,9 @@ class blob
 		if(this.r <= 0 ) return;
 		push();
 		translate(this._pos[0], this._pos[1], this._pos[2]);
+		let angles = vecToAngle(this.dir[0], this.dir[1], this.dir[2]);
+		rotateZ(angles.phi);
+		rotateY(angles.theta);
 		sphere(this.r, 80, 80);
 		pop();
 	}
