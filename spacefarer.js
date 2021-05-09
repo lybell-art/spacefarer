@@ -216,38 +216,41 @@ function preload()
 	myShader=loadShader('shaders/shader.vert','shaders/shader.frag');
 }
 
-let b, slider;
+let b;
 function setup()
 {
 	frameRate(60);
 	createCanvas(windowWidth,windowHeight,WEBGL);
 //	myCam=new lybellP5Camera(0, 0, 0, 0,0,1000);
-	myCam=new lybellP5Camera(0,0,-500,0,0,0)
+	myCam=new lybellP5Camera(0,-500,0,0,0,0)
 	myCam.initialize();
 	bs=new blobSystem();
 	debugMode();
 	noStroke();
 	fill("#24adaf");
 	b=new blob(0,0,0);
-	slider=createSlider(-180,180,0);
-	slider.position(10, 10);
 }
 
 function draw()
 {
 	background(255);
-	if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.pan(0,1); //W
+/*	if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.pan(0,1); //W
 	if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
 	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(1,0); //A
-	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D
+	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D */
+	
+	if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.rotate(0,1); //W
+	if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.rotate(0,-1); //S
+	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.rotate(-1,0); //A
+	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.rotate(1,0); //D
+	
+	
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
 //	bs.control();
 //	bs.render();
-	b.movement();
+//	b.movement();
 	b.render();
-	b.dir=[Math.cos(slider.value() * PI / 180),Math.sin(slider.value() * PI / 180), 0];
-	
 }
 
 function mousePressed()
