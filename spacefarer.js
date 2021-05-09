@@ -216,18 +216,15 @@ function cameraMovement(cam, center, mode)
 	let cenBase=center - center % SCENE_DURATION + SCENE_DURATION/2;
 	switch(mode){
 		case 0:
-		cam.setPosition(0, 0, center, 0, 0, center+1000);
-		break;
-		case 1:
 		cam.setPosition(-350, -400, cenBase+200 - center % SCENE_DURATION, 0, 0, cenBase);
 		break;
-		case 2:
+		case 1:
 		cam.setPosition(-500, -100, cenBase, 0, 0, cenBase - SCENE_DURATION/4 + (center % SCENE_DURATION) /2);
 		break;
-		case 3:
+		case 2:
 		cam.setPosition(0, -500, cenBase+100, 0, 0, cenBase);
 		break;
-		case 4:
+		case 3:
 		cam.setPosition(-100, 500, cenBase+200, 0, 0, cenBase);
 		break;
 	}
@@ -262,7 +259,7 @@ function draw()
 	}
 	else
 	{
-		let camMode = Math.floor(bs.center / SCENE_DURATION) % 5;
+		let camMode = Math.floor(bs.center / SCENE_DURATION) % 4;
 		cameraMovement(myCam, bs.center, camMode);
 	}
 	myShader.setUniform("uFrameCount", frameCount);
