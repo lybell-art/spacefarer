@@ -168,6 +168,7 @@ class blobSystem
 			for(let i = this.blobs.length-1 ; i>=0; i++)
 			{
 				const blob = this.blobs[i];
+				console.log(blob);
 				if(blob.isDead())
 				{
 					this.blobs.splice(i, 1);
