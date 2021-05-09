@@ -7,5 +7,5 @@ varying vec3 vNormal;
 
 void main() {
   vec3 color = vNormal * 0.3 + 0.7;
-  gl_FragColor = vec4(color ,1.0);
+  gl_FragColor = vec4(color.x, abs(color.y), color.z ,1.0);
 }
