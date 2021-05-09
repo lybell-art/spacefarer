@@ -14,7 +14,7 @@ varying vec3 vNormal;
 void main() {
   vec4 positionVec4 = vec4(aPosition, 1.0);
   float frequency = 20.0;
-  float amplitude = 0.1;
+  float amplitude = 0.15;
   float distortion = sin(positionVec4.x * frequency + uFrameCount * 0.1);
   positionVec4.x += distortion * aNormal.x * amplitude;
 
