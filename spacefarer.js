@@ -27,7 +27,11 @@ class blob
 		this.r=0;
 		this.frame=BLOB_TRANS_DURAITION;
 		this.state='g'; //g:generate i:idle s:split d:destroy x:pending-removal _:pending-split
-		if(isSplit) this.state = '_';
+		if(isSplit)
+		{
+			this.state = '_';
+			this.scale *= 0.625;
+		}
 	}
 	get pos()
 	{
@@ -178,12 +182,12 @@ class blobSystem
 			}
 		});
 		console.log(no);
-		if(no > -1)
+/*		if(no > -1)
 		{
 			targetBlob=this.blobs[no];
 			targetBlob.startSplit();
 			for(let i=0;i<2;i++) this.blobs.push(new blob(targetBlob.pos[0], targetBlob.pos[1], targetBlob.pos[2], true));
-		}
+		}*/
 		return targetBlob;
 	}
 	render()
@@ -219,6 +223,7 @@ function draw()
 	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
+	bs.pickup(mouseX - windowWidth/2,mouseY - windowHeight/2,myCam);
 	bs.control();
 	bs.render();
 }
