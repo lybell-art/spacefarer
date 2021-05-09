@@ -246,7 +246,7 @@ function draw()
 //	bs.render();
 	b.movement();
 	b.render();
-	b.dir=[Math.cos(slider.value() * PI / 180),0,Math.sin(slider.value() * PI / 180)];
+	b.dir=[Math.cos(slider.value() * PI / 180),Math.sin(slider.value() * PI / 180), 0];
 	
 }
 
