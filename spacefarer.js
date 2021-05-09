@@ -219,9 +219,12 @@ function cameraMovement(cam, center, mode)
 		cam.setPosition(0, 0, center, 0, 0, center+1000);
 		break;
 		case 1:
-		cam.setPosition(-500, -100, cenBase, 0, 0, center);
+		cam.setPosition(-350, -400, cenBase+200, 0, 0, cenBase);
 		break;
 		case 2:
+		cam.setPosition(-500, -100, cenBase, 0, 0, center);
+		break;
+		case 3:
 		cam.setPosition(0, -500, cenBase+100, 0, 0, cenBase);
 		break;
 	}
@@ -249,7 +252,7 @@ function draw()
 	if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
 	if (keyIsDown(LEFT_ARROW) || keyIsDown(65) ) myCam.pan(1,0); //A
 	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D */
-	let camMode = Math.floor(bs.center / SCENE_DURATION) % 3;
+	let camMode = Math.floor(bs.center / SCENE_DURATION) % 4;
 	cameraMovement(myCam, bs.center, camMode);
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
