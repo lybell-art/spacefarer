@@ -234,7 +234,6 @@ function draw()
 	if (keyIsDown(RIGHT_ARROW) || keyIsDown(68) ) myCam.pan(-1,0); //D
 	myShader.setUniform("uFrameCount", frameCount);
 	shader(myShader);
-	bs.pickup(mouseX - windowWidth/2,mouseY - windowHeight/2,myCam);
 	bs.control();
 	bs.render();
 }
