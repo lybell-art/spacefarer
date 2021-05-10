@@ -273,7 +273,7 @@ function draw()
 	resetShader();*/
 	orbitControl();
 	ambientLight(200);
-	directionalLight(255, 255, 255, -1, -1, -1);
+	directionalLight(255, 255, 255, 1, 1, 1);
 	push();
 	translate(0,0,bs.center);
 	rotateZ(PI);
