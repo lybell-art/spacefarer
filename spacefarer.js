@@ -1,5 +1,5 @@
 let bs, myCam, freeCam=false;
-let spaceship;
+let spaceship, shipTex;
 let myShader;
 const SCENE_DURATION = 500;
 
@@ -236,6 +236,7 @@ function preload()
 {
 	myShader=loadShader('shaders/shader.vert','shaders/shader.frag');
 	spaceship = loadModel('data/spaceship.obj', true);
+	shipTex = loadImage('data/spaceship_mapping.png');
 }
 
 function setup()
@@ -274,6 +275,7 @@ function draw()
 	push();
 	translate(0,0,bs.center);
 	model(spaceship);
+	texture(shipTex);
 	pop();
 }
 
