@@ -138,10 +138,10 @@ class blobSystem
 		this._center = 0;
 		this.blobs=[];
 		this.frame = 0;
-		for(let i=0; i<10; i++)
+		for(let i=0; i<15; i++)
 		{
 			let v=p5.Vector.random3D();
-			v = v.mult(randto(200,400));
+			v = v.mult(randto(200,600));
 			this.blobs.push( new blob(v.x, v.y, v.z) );
 		}
 	}
