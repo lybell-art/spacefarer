@@ -1,4 +1,5 @@
 let bs, myCam, freeCam=false;
+let spaceship;
 let myShader;
 const SCENE_DURATION = 500;
 
@@ -233,6 +234,7 @@ function cameraMovement(cam, center, mode)
 function preload()
 {
 	myShader=loadShader('shaders/shader.vert','shaders/shader.frag');
+	spaceship = loadModel('data/spaceship.obj', true);
 }
 
 function setup()
@@ -247,7 +249,7 @@ function setup()
 
 function draw()
 {
-	const deg = bs.center * PI/180;
+/*	const deg = bs.center * PI/180;
 	background(Math.sin(deg)*30 + 30, 40, Math.cos(deg)*60 + 60);
 	if(freeCam)
 	{
@@ -266,9 +268,11 @@ function draw()
 	shader(myShader);
 	bs.control();
 	bs.render();
+	resetShader();*/
+	orbitControl();
 	push();
 	translate(0,0,bs.center);
-	box(50,50,100);
+	model(spaceship);
 	pop();
 }
 
