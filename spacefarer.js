@@ -295,3 +295,8 @@ function mousePressed()
 {
 	bs.pickup(mouseX - windowWidth/2,mouseY - windowHeight/2,myCam);
 }
+function windowResized()
+{
+	resizeCanvas(windowWidth, windowHeight, false);
+	myCam.apply();
+}
