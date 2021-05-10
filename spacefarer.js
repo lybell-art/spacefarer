@@ -253,7 +253,7 @@ function draw()
 {
 	const deg = bs.center * PI/180;
 	background(Math.sin(deg)*30 + 30, 40, Math.cos(deg)*60 + 60);
-/*	if(freeCam)
+	if(freeCam)
 	{
 		if (keyIsDown(UP_ARROW) || keyIsDown(87) ) myCam.pan(0,1); //W
 		if (keyIsDown(DOWN_ARROW) || keyIsDown(83) ) myCam.pan(0,-1); //S
@@ -270,11 +270,11 @@ function draw()
 	shader(myShader);
 	bs.control();
 	bs.render();
-	resetShader();*/
+	resetShader();
 	orbitControl();
 	ambientLight(190);
-	directionalLight(220, 220, 220, 1, 1, 1);
-	directionalLight(125, 125, 125, -0.6, -1, -0.7);
+	directionalLight(210, 210, 210, 1, 1, 1);
+	directionalLight(105, 105, 105, -0.6, -1, -0.7);
 	push();
 	translate(0,0,bs.center);
 	rotateZ(PI);
