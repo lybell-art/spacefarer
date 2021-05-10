@@ -277,6 +277,8 @@ function draw()
 	push();
 	translate(0,0,bs.center);
 	rotateZ(PI);
+	rotateY(PI/2);
+	scale(0.6);
 	texture(shipTex);
 	model(spaceship);
 	pop();
