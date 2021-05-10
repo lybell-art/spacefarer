@@ -29,7 +29,7 @@ function vecToAngle(x, y, z)
 const BLOB_TRANS_DURAITION = 60;
 class blob
 {
-	constructor(x,y,z, isSplit=false)
+	constructor(x,y,z, s=null, isSplit=false)
 	{
 		this._pos=[x,y,z];
 		let rand3d=p5.Vector.random3D();
@@ -38,6 +38,7 @@ class blob
 		this.r=0;
 		this.frame=BLOB_TRANS_DURAITION;
 		this.state='g'; //g:generate i:idle s:split d:destroy x:pending-removal _:pending-split
+		if(s !== null) this.scale=s;
 		if(isSplit)
 		{
 			this.state = '_';
@@ -201,7 +202,7 @@ class blobSystem
 		{
 			targetBlob=this.blobs[no];
 			targetBlob.startSplit();
-			for(let i=0;i<2;i++) this.blobs.push(new blob(targetBlob.pos[0], targetBlob.pos[1], targetBlob.pos[2], true));
+			for(let i=0;i<2;i++) this.blobs.push(new blob(targetBlob.pos[0], targetBlob.pos[1], targetBlob.pos[2], targetBlob.scale, true));
 		}
 		return targetBlob;
 	}
