@@ -274,8 +274,8 @@ function draw()
 	orbitControl();
 	push();
 	translate(0,0,bs.center);
-	model(spaceship);
 	texture(shipTex);
+	model(spaceship);
 	pop();
 }
 
