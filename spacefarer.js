@@ -229,6 +229,8 @@ function cameraMovement(cam, center, mode)
 		case 3:
 		cam.setPosition(-100, 500, cenBase+200, 0, 0, cenBase);
 		break;
+		default:
+		cam.setPosition(0,0,center,0,0,center+1000);
 	}
 }
 
@@ -288,7 +290,7 @@ function keyPressed()
 {
 	if (keyCode === 32) {
 		freeCam = !freeCam;
-		if(freeCam) cameraMovement(myCam, bs.center, 0);
+		if(freeCam) cameraMovement(myCam, bs.center, -1);
 	}
 }
 
