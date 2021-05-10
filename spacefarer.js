@@ -272,8 +272,8 @@ function draw()
 	bs.render();
 	resetShader();*/
 	orbitControl();
-	ambientLight(200);
-	directionalLight(255, 255, 255, 1, 1, 1);
+	ambientLight(190);
+	directionalLight(220, 220, 220, 1, 1, 1);
 	directionalLight(30, 30, 30, -0.6, 1, -0.7);
 	push();
 	translate(0,0,bs.center);
