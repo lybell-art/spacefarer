@@ -274,7 +274,7 @@ function draw()
 	orbitControl();
 	ambientLight(190);
 	directionalLight(220, 220, 220, 1, 1, 1);
-	directionalLight(30, 30, 30, -0.6, 1, -0.7);
+	directionalLight(125, 125, 125, -0.6, 1, -0.7);
 	push();
 	translate(0,0,bs.center);
 	rotateZ(PI);
