@@ -82,7 +82,7 @@ class blob
 	}
 	checkOutFocus(center)
 	{
-		if(center - this._pos[2] >= 500 && this.state == 'i')
+		if(center - this._pos[2] >= 600 && this.state == 'i')
 		{
 			this.state = 'd';
 			this.frame = BLOB_TRANS_DURAITION;
@@ -157,7 +157,7 @@ class blobSystem
 		{
 			let v=p5.Vector.random2D();
 			v.mult(randto(100,300));
-			this.blobs.push( new blob(v.x, v.y, this._center + 500) );
+			this.blobs.push( new blob(v.x, v.y, this._center + 600) );
 		}
 		this.blobs.forEach(function(e){
 			e.movement();
