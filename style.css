@@ -1,0 +1,20 @@
+#help{
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	color: #fff;
+	font-size: 36px;
+}
+
+#help2{
+	position:absolute;
+	width:250px;
+	height:150px;
+	background-color:#00000080;
+	visibility: hidden;
+	transition: all 0.5s;
+}
+
+#help:hover  #help2{
+	visibility:show;
+}
